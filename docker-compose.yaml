@@ -1,0 +1,21 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    ports:
+      - '4566:4566'
+    environment:
+      SERVICES: sqs,s3
+      DEFAULT_REGION: eu-west-2
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'

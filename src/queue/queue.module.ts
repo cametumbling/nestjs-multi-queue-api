@@ -11,7 +11,7 @@ const client = createQueueClient(loadQueueClients());
 @Module({
   providers: [
     {
-      provide: QUEUE_CLIENT, 
+      provide: QUEUE_CLIENT,
       useValue: client,
     },
     QueueService,

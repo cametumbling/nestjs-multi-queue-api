@@ -16,8 +16,9 @@ export class QueueService {
   }
 
   async consume(topic: string): Promise<void> {
-    await this.client.consume(topic, async msg => {
+    await this.client.consume(topic, (msg: unknown) => {
       console.log(`message on ${topic}:`, msg);
+      return Promise.resolve();
     });
   }
 }

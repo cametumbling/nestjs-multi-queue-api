@@ -6,13 +6,13 @@ export class CompositeClient implements QueueClient {
   constructor(private readonly clients: QueueClient[]) {}
 
   async publish(topic: string, message: unknown): Promise<void> {
-    await Promise.all(this.clients.map(c => c.publish(topic, message)));
+    await Promise.all(this.clients.map((c) => c.publish(topic, message)));
   }
 
   async consume(
     topic: string,
     handler: (msg: unknown) => Promise<void>,
   ): Promise<void> {
-    await Promise.all(this.clients.map(c => c.consume(topic, handler)));
+    await Promise.all(this.clients.map((c) => c.consume(topic, handler)));
   }
 }
