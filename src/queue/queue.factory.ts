@@ -1,1 +1,0 @@
-//reads ENV vars and decides which queue(s) to use
